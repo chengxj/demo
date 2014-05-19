@@ -18,9 +18,14 @@
 	      						<input type="text" placeholder="userName / phone" class="form-control">
 	      						<span class="input-group-btn">
 	        						<button class="btn btn-default" type="button">Search</button>
-	      						</span>
-	    					</div>
+	      						</span>	      						
+	    					</div>  					
 	  					</div>
+	  					<div class="col-lg-6">
+		  					<div class="pull-right">
+		  						<span style="padding-top:15px;float:left">{{'12313' | number}} Rows</span>
+		  					</div>
+	  					</div>  					
   					</div>				 					
 					<table>
 						<thead>
