@@ -1,0 +1,36 @@
+@CHARSET "UTF-8";
+
+.panel-body table {
+  font-size: 14px;
+  width: 100%;
+  float:left;
+  margin-top:15px;
+}
+
+.panel-body table thead {
+  background: #e5f5fa;
+}
+
+.panel-body table thead td {
+  text-align: center;
+  font-weight: bold;
+}
+
+.panel-body table tr {
+  height: 20px;
+}
+
+.panel-body table td {
+  padding: 10px;
+  border: 1px solid #ccc;
+  vertical-align: top;
+  text-align: right;
+}
+
+.panel-body table td.text-left {
+  text-align: left;
+}
+
+.panel-body table td.text-center {
+  text-align: center;
+}
