@@ -2,22 +2,28 @@ package com.demo.web;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import com.demo.dto.UserDTO;
+import com.demo.dto.UsersDTO;
 import com.demo.entity.User;
 import com.demo.request.UserRequest;
+import com.demo.service.DemoService;
 
 @Controller
 public class ApiController {
 	
-	  @RequestMapping(value = "/api/search_users", method = RequestMethod.POST)
-	  @ResponseBody
-	  public UserDTO updateAppSetting(@RequestBody UserRequest request) {
-		  UserDTO userDTO = new UserDTO();
+	 @Autowired
+	 private DemoService demoService;	
+	
+	 @RequestMapping(value = "/api/search_users", method = RequestMethod.POST)
+	 @ResponseBody
+	 public UsersDTO searchUsers(@RequestBody UserRequest request) {
+		  UsersDTO usersDTO = new UsersDTO();
 		  List<User> users = new ArrayList<User>();
 		  User obj_01 = new User();
 		  obj_01.userId = request.userId + "_01";
@@ -33,8 +39,9 @@ public class ApiController {
 		  obj_02.email = request.email + "_02";
 		  obj_02.remarks = request.remarks + "_02";		  
 		  users.add(obj_02);
-		  userDTO.users = users;
-		  return userDTO;
+		  usersDTO.count = 2;
+		  usersDTO.users = users;
+		  return usersDTO;
 	  }
-
+	  
 }

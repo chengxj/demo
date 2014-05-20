@@ -2,8 +2,6 @@
 <c:set var="ngApp" value="app"/>
 <c:set var="ngController" value="ctrl"/>
 <%@include file="include/header.jspf" %>
-
-
 	<div class="container">
 		<p></p>
 		<div class="bs-example">
@@ -23,7 +21,7 @@
 	  					</div>
 	  					<div class="col-lg-6">
 		  					<div class="pull-right">
-		  						<span style="padding-top:15px;float:left">{{'12313' | number}} Rows</span>
+		  						<span style="padding-top:15px;float:left">{{data.count | number}} Rows</span>
 		  					</div>
 	  					</div>  					
   					</div>				 					
@@ -31,12 +29,11 @@
 						<thead>
 							<tr>
 								<td width="5%">#</td>
-								<td width="16%">userId</td>
-								<td width="16%">userName</td>
-								<td width="16%">phone</td>
-								<td width="16%">email</td>
-								<td width="16%">remarks</td>
-								<td width="15%">operation</td>								
+								<td width="19%">userId</td>
+								<td width="19%">userName</td>
+								<td width="19%">phone</td>
+								<td width="19%">email</td>
+								<td width="19%">remarks</td>
 							</tr>
 						</thead>
 						<tbody>
@@ -47,7 +44,6 @@
 								<td class="text-left">{{User.phone}}</td>
 								<td class="text-left">{{User.email}}</td>
 								<td class="text-left">{{User.remarks}}</td>
-								<td class="text-center"></td>
 							</tr>
 						</tbody>
 					</table>
@@ -62,13 +58,26 @@ function User() {
 	return obj;
 }
 
+var rootPath = '${pageContext.request.contextPath}';
+
 angular.module('app', ['ngResource'])
-.controller('ctrl', ['$scope', '$resource', 
-	function($scope, $resource) {
+.factory('userDAO', function($resource) {
+	return {addUser:function(){
+				return $resource(rootPath + '/api/add_user.json');
+			},
+			removeUser:function(){
+				return $resource(rootPath + '/api/remove_user.json');
+			},
+			getUsers:function(){
+				return $resource(rootPath + '/api/search_users.json');
+			}
+		   };	
+})
+.controller('ctrl', ['$scope', 'userDAO', 
+	function($scope, userDAO) {
 	
 		$scope.initPage = function() {
-			var search_users = $resource('/demo/api/search_users.json');
-			search_users.save(new User(),function(data){
+			userDAO.getUsers().save(new User(),function(data){
 				$scope.data = data;
 			});
 		};

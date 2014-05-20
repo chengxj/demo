@@ -1,16 +1,15 @@
 package com.demo.dto;
 
 import java.util.List;
-
+import com.demo.entity.Activities;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.demo.entity.User;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class UserDTO {
+public class ActivitiesDTO {
 	
-	public List<User> users;
-	public long count;
+	public List<Activities> activities;
+	public long num;
 
 }
