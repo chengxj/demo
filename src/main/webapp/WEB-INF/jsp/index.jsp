@@ -21,7 +21,7 @@
 	  					</div>
 	  					<div class="col-lg-6">
 		  					<div class="pull-right">
-		  						<span style="padding-top:15px;float:left">{{data.count | number}} Rows</span>
+		  						<span style="padding-top:15px;float:left">{{data.num | number}} Rows</span>
 		  					</div>
 	  					</div>  					
   					</div>				 					
@@ -29,21 +29,23 @@
 						<thead>
 							<tr>
 								<td width="5%">#</td>
-								<td width="19%">userId</td>
-								<td width="19%">userName</td>
-								<td width="19%">phone</td>
-								<td width="19%">email</td>
-								<td width="19%">remarks</td>
+								<td width="25%">title</td>
+								<td width="10%">type</td>
+								<td width="10%">leader</td>
+								<td width="15%">scenic_spots</td>
+								<td width="15%">departure</td>
+								<td width="20%">destination</td>
 							</tr>
 						</thead>
 						<tbody>
-							<tr ng-repeat="User in data.users">
+							<tr ng-repeat="Activities in data.activities">
 								<td class="text-center">{{$index + 1}}</td>							
-								<td class="text-left">{{User.userId}}</td>
-								<td class="text-left">{{User.userName}}</td>
-								<td class="text-left">{{User.phone}}</td>
-								<td class="text-left">{{User.email}}</td>
-								<td class="text-left">{{User.remarks}}</td>
+								<td class="text-left">{{Activities.title}}</td>
+								<td class="text-left">{{Activities.type_enum}}</td>
+								<td class="text-left">{{Activities.leader}}</td>
+								<td class="text-left">{{Activities.scenic_spots}}</td>
+								<td class="text-left">{{Activities.departure}}</td>
+								<td class="text-left">{{Activities.destination}}</td>
 							</tr>
 						</tbody>
 					</table>
@@ -53,31 +55,21 @@
 		</div>
 	</div>
 <script>
-function User() {
-	var obj = {userId:"test", userName:"test", phone:"test", email:"test", remarks:"test"};
-	return obj;
-}
-
 var rootPath = '${pageContext.request.contextPath}';
 
 angular.module('app', ['ngResource'])
-.factory('userDAO', function($resource) {
-	return {addUser:function(){
-				return $resource(rootPath + '/api/add_user.json');
-			},
-			removeUser:function(){
-				return $resource(rootPath + '/api/remove_user.json');
-			},
-			getUsers:function(){
-				return $resource(rootPath + '/api/search_users.json');
+.factory('activityDAO', function($resource) {
+	return {
+			getActivities:function() {
+				return $resource(rootPath + '/api/search_activities.json');
 			}
 		   };	
 })
-.controller('ctrl', ['$scope', 'userDAO', 
-	function($scope, userDAO) {
+.controller('ctrl', ['$scope', 'activityDAO', 
+	function($scope, activityDAO) {
 	
 		$scope.initPage = function() {
-			userDAO.getUsers().save(new User(),function(data){
+			activityDAO.getActivities().save({searchTerm:'', index:0}, function(data) {
 				$scope.data = data;
 			});
 		};

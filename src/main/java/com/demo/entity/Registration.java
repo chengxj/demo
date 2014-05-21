@@ -1,16 +1,30 @@
 package com.demo.entity;
 
-public class Registration {
+import java.io.Serializable;
+
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "registration")
+public class Registration  implements Serializable {
 	
-	public Long id;// 主键
-	public Long activities_id;
-	public String name;// 人名
-	public SexEnum sex;// 性别
-	public String realName;// 真实姓名
-	public String contactWay;// 联系方式
-	public String emergencyContact;// 紧急联系人
-	public String emergencyContactWay;// 紧急联系电话
-	public int num;// 人数
-	public String equipmentExperienceRemarks;// 装备|户外经验|备注
+	@Id
+	@GeneratedValue
+	private Long id;// 主键
+	private Long activities_id;
+	private String name;// 人名
+	@Enumerated(EnumType.STRING)
+	private SexEnum sex = SexEnum.MAN;// 性别
+	private String real_name;// 真实姓名
+	private String contact_way;// 联系方式
+	private String emergency_contact;// 紧急联系人
+	private String emergency_contact_way;// 紧急联系电话
+	private int num;// 人数
+	private String equipment_experience_remarks;// 装备|户外经验|备注
 	
 }

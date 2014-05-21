@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:oxm="http://www.springframework.org/schema/oxm"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:redis="http://www.springframework.org/schema/redis"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd 
+  http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
+  http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+  http://www.springframework.org/schema/oxm http://www.springframework.org/schema/oxm/spring-oxm-3.1.xsd
+  http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.1.xsd
+  http://www.springframework.org/schema/redis http://www.springframework.org/schema/redis/spring-redis.xsd">
+
+  <context:component-scan base-package="com.androidspaces" />
+  <context:annotation-config />
+  <!--context:property-placeholder location="classpath:db.properties"  /-->
+   <!-- For application properties files -->
+  <bean id="applicationProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+    <property name="ignoreResourceNotFound" value="true"/>
+    <property name="locations">
+      <list>
+        <value>classpath:app.properties</value>
+        <value>classpath:log4j.properties</value>
+        <value>file:${app.propertiesFile}</value>
+      </list>
+    </property>
+  </bean>
+
+  <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+    <property name="ignoreUnresolvablePlaceholders" value="true"/>
+    <property name="properties" ref="applicationProperties" />
+  </bean>  
+  
+
+	<!-- Root Context: defines shared resources visible to all other web components -->
+  <import resource="db.xml" />	 
+  <import resource="servlet-context.xml"/>  
+  
+</beans>
