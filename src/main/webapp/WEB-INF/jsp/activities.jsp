@@ -13,9 +13,9 @@
 					<div class="row">
 						<div class="col-lg-6">
 	    					<div class="input-group">
-	      						<input type="text" placeholder="userName / phone" class="form-control">
+	      						<input type="text" placeholder="title" ng-model="searchTerm" class="form-control">
 	      						<span class="input-group-btn">
-	        						<button class="btn btn-default" type="button">Search</button>
+	        						<button class="btn btn-default" type="button" ng-click="searchActivities(searchTerm)" >Search</button>
 	      						</span>	      						
 	    					</div>  					
 	  					</div>
@@ -27,7 +27,7 @@
   					</div>				 					
 					<table>
 						<thead>
-							<tr>
+							<tr class="clickableRow">
 								<td width="5%">#</td>
 								<td width="25%">title</td>
 								<td width="10%">type</td>
@@ -38,7 +38,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr ng-repeat="Activities in data.activities">
+							<tr ng-repeat="Activities in data.activities" ng-click="linkRow(Activities.id)" onmouseover="style.backgroundColor='#fae5e5'" onmouseout="style.backgroundColor='' ">
 								<td class="text-center">{{$index + 1}}</td>							
 								<td class="text-left">{{Activities.title}}</td>
 								<td class="text-left">{{Activities.type_enum}}</td>
@@ -60,18 +60,26 @@ var rootPath = '${pageContext.request.contextPath}';
 angular.module('app', ['ngResource'])
 .factory('activityDAO', function($resource) {
 	return {
-			getActivities:function() {
-				return $resource(rootPath + '/api/search_activities.json');
-			}
+				getActivities:function() {
+					return $resource(rootPath + '/api/search_activities.json');
+				}
 		   };	
 })
 .controller('ctrl', ['$scope', 'activityDAO', 
 	function($scope, activityDAO) {
 	
 		$scope.initPage = function() {
-			activityDAO.getActivities().save({searchTerm:'', index:0}, function(data) {
+			$scope.searchActivities("");
+		};
+		
+		$scope.searchActivities = function(searchTerm) {
+			activityDAO.getActivities().save({searchTerm:searchTerm, index:0}, function(data) {
 				$scope.data = data;
 			});
+		};
+		
+		$scope.linkRow = function(val) {
+			document.location.href = rootPath + "/activities_users/" + val;
 		};
 		
 		$scope.initPage();		

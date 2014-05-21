@@ -18,13 +18,33 @@ public class DemoDao {
 
 	private static int pageSize = 10;
 
+	private String getSearchActivitiesHql(ActivitiesRequest request) {
+		String hql;
+		if (request.searchTerm == null || request.searchTerm.isEmpty()) {
+			hql = "from Activities";
+		} else {
+			hql = "From Activities where title like '%" + request.searchTerm + "%'";
+		}
+		return hql;
+	}
+	
+	private String getSearchActivitiesCountHql(String searchTerm) {
+		String hql;
+		if (searchTerm == null || searchTerm.isEmpty()) {
+			hql = "select count(*) from Activities";
+		} else {
+			hql = "select count(*) From Activities where title like '%" + searchTerm + "%'";
+		}
+		return hql;
+	}
+	
 	/**
 	 * 
 	 * @param request
 	 * @return
 	 */
 	public List<Activities> searchActivities(ActivitiesRequest request) {
-		String hql = "From Activities";
+		String hql = getSearchActivitiesHql(request);
 		return entityManager.createQuery(hql, Activities.class)
 				.setFirstResult(request.index).setMaxResults(pageSize)
 				.getResultList();
@@ -37,12 +57,7 @@ public class DemoDao {
 	 */
 	public int getSearchActivitiesCount(String searchTerm) {
 		try {
-			String hql;
-			if (searchTerm == null || searchTerm.isEmpty()) {
-				hql = "select count(*) from Activities";
-			} else {
-				hql = "select count(*) From Activities";
-			}
+			String hql = getSearchActivitiesCountHql(searchTerm);
 			return entityManager.createQuery(hql, Long.class)
 					.getSingleResult().intValue();
 		} catch (NoResultException e) {

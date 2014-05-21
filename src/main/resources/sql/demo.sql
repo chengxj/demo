@@ -23,7 +23,18 @@ delete from `activities`;
 INSERT INTO activities (id, title, type_enum, scenic_spots, departure, destination, leader, start_date, end_date) 
 VALUES 
 (1, '东大高', 'CYCLING', '', '清河', '东方红、大村、高崖口', '萝卜', null, null),
-(2, '花海', 'MOUNTAIN', '', '安慧桥', '珍珠泉', '黑猫', null, null);
+(2, '花海', 'MOUNTAIN', '', '安慧桥', '珍珠泉', '黑猫', null, null),
+(3, '东大高', 'CYCLING', '', '清河', '东方红、大村、高崖口', '萝卜', null, null),
+(4, '花海', 'MOUNTAIN', '', '安慧桥', '珍珠泉', '黑猫', null, null),
+(5, '东大高', 'CYCLING', '', '清河', '东方红、大村、高崖口', '萝卜', null, null),
+(6, '花海', 'MOUNTAIN', '', '安慧桥', '珍珠泉', '黑猫', null, null),
+(7, '东大高', 'CYCLING', '', '清河', '东方红、大村、高崖口', '萝卜', null, null),
+(8, '花海', 'MOUNTAIN', '', '安慧桥', '珍珠泉', '黑猫', null, null),
+(9, '东大高', 'CYCLING', '', '清河', '东方红、大村、高崖口', '萝卜', null, null),
+(10, '花海', 'MOUNTAIN', '', '安慧桥', '珍珠泉', '黑猫', null, null),
+(11, '东大高', 'CYCLING', '', '清河', '东方红、大村、高崖口', '萝卜', null, null),
+(12, '花海', 'MOUNTAIN', '', '安慧桥', '珍珠泉', '黑猫', null, null);
+
 
 --
 -- Table structure for table `registration`
