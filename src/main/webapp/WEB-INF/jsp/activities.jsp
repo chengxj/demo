@@ -3,7 +3,7 @@
 <c:set var="ngController" value="ctrl"/>
 <%@include file="include/header.jspf" %>
 	<div class="container">
-		<p></p>
+		<p></p>		
 		<div class="bs-example">
 			<div class="panel panel-primary">
 				<div class="panel-heading">

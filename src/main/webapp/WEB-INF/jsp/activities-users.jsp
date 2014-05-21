@@ -5,54 +5,42 @@
 	<div class="container">
 		<p></p>
 		<div class="bs-example">
-			<div class="panel panel-primary">
-				<div class="panel-heading">
-					<h3 class="panel-title">demo</h3>
-				</div>
-				<div class="panel-body">
-					<div class="row">
-						<div class="col-lg-6">
-	    					<div class="input-group">
-	      						<input type="text" placeholder="title" ng-model="searchTerm" class="form-control">
-	      						<span class="input-group-btn">
-	        						<button class="btn btn-default" type="button" ng-click="searchActivities(searchTerm)" >Search</button>
-	      						</span>	      						
-	    					</div>  					
-	  					</div>
-	  					<div class="col-lg-6">
-		  					<div class="pull-right">
-		  						<span style="padding-top:15px;float:left">{{data.num | number}} Rows</span>
-		  					</div>
-	  					</div>  					
-  					</div>				 					
-					<table>
-						<thead>
-							<tr class="clickableRow">
-								<td width="5%">#11</td>
-								<td width="25%">title</td>
-								<td width="10%">type</td>
-								<td width="10%">leader</td>
-								<td width="15%">scenic_spots</td>
-								<td width="15%">departure</td>
-								<td width="20%">destination</td>
-							</tr>
-						</thead>
-						<tbody>
-							<tr ng-repeat="Activities in data.activities" ng-click="linkTr(Activities.id)" onmouseover="style.backgroundColor='#fae5e5'" onmouseout="style.backgroundColor='' ">
-								<td class="text-center">{{$index + 1}}</td>							
-								<td class="text-left">{{Activities.title}}</td>
-								<td class="text-left">{{Activities.type_enum}}</td>
-								<td class="text-left">{{Activities.leader}}</td>
-								<td class="text-left">{{Activities.scenic_spots}}</td>
-								<td class="text-left">{{Activities.departure}}</td>
-								<td class="text-left">{{Activities.destination}}</td>
-							</tr>
-						</tbody>
-					</table>
-					
-				</div>
-			</div>
-		</div>
+      <div class="panel panel-primary">
+        <div class="panel-heading">demo</div>
+        <div class="panel-body">
+          <p>####################################################################################################################################</p>
+          <p>####################################################################################################################################</p>
+          <p>####################################################################################################################################</p>
+        </div>   
+        <table class="table">
+			<thead>
+				<tr class="clickableRow">
+					<td width="9%">#</td>
+					<td width="13%">title</td>
+					<td width="5%">type</td>
+					<td width="5%">leader</td>
+					<td width="13%">scenic_spots</td>
+					<td width="20%">departure</td>
+					<td width="20%">destination</td>
+					<td width="15%">operation</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="Activities in data.activities" onmouseover="style.backgroundColor='#fae5e5'" onmouseout="style.backgroundColor='' ">
+					<td class="text-left">{{$index + 1}}</td>							
+					<td class="text-left">{{Activities.title}}</td>
+					<td class="text-left">{{Activities.type_enum}}</td>
+					<td class="text-left">{{Activities.leader}}</td>
+					<td class="text-left">{{Activities.scenic_spots}}</td>
+					<td class="text-left">{{Activities.departure}}</td>
+					<td class="text-left">{{Activities.destination}}</td>
+					<td class="text-left"></td>
+				</tr>
+			</tbody>
+		</table>     
+
+      </div>
+    </div>
 	</div>
 <script>
 var rootPath = '${pageContext.request.contextPath}';
