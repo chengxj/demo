@@ -7,7 +7,7 @@ import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import com.demo.entity.Activities;
-import com.demo.request.ActivitiesRequest;
+import com.demo.entity.Registration;
 
 @Repository
 @Transactional(value = "transactionManager", noRollbackFor = { NoResultException.class })
@@ -18,24 +18,42 @@ public class DemoDao {
 
 	private static int pageSize = 10;
 
-	private String getSearchActivitiesHql(ActivitiesRequest request) {
-		String hql;
-		if (request.searchTerm == null || request.searchTerm.isEmpty()) {
-			hql = "from Activities";
-		} else {
-			hql = "From Activities where title like '%" + request.searchTerm + "%'";
-		}
-		return hql;
+
+	/**
+	 * 
+	 * @param id
+	 * @return
+	 */
+	public Activities getActivitiesById(long id) {
+		 String hql = "from Activities where id = :uuid";
+		 return entityManager.createQuery(hql, Activities.class)
+				 .setParameter("uuid", id)
+				 .getSingleResult();
 	}
 	
-	private String getSearchActivitiesCountHql(String searchTerm) {
-		String hql;
-		if (searchTerm == null || searchTerm.isEmpty()) {
-			hql = "select count(*) from Activities";
-		} else {
-			hql = "select count(*) From Activities where title like '%" + searchTerm + "%'";
-		}
-		return hql;
+	/**
+	 * 
+	 * @param activities_id
+	 * @return
+	 */
+	public List<Registration> getRegistrations(long activities_id) {
+		String hql = "from Registration where activities_id = :activities_id";
+		return entityManager.createQuery(hql, Registration.class).setParameter("activities_id", activities_id)
+				.getResultList();
+	}
+	
+	/**
+	 * 
+	 * @param uuid
+	 * @param activities_id
+	 * @return
+	 */
+	public Registration getRegistrationById(long uuid, long activities_id) {
+		 String hql = "from Registration where id = :uuid and activities_id = :activities_id";
+		 return entityManager.createQuery(hql, Registration.class)
+				 .setParameter("uuid", uuid)
+				 .setParameter("activities_id", activities_id)
+				 .getSingleResult();
 	}
 	
 	/**
@@ -43,10 +61,16 @@ public class DemoDao {
 	 * @param request
 	 * @return
 	 */
-	public List<Activities> searchActivities(ActivitiesRequest request) {
-		String hql = getSearchActivitiesHql(request);
+	public List<Activities> searchActivities(String searchTerm, int index) {
+		String hql;
+		if (searchTerm == null || searchTerm.isEmpty()) {
+			hql = "from Activities";
+		} else {
+			hql = "From Activities where title like '%" + searchTerm + "%'";
+		}
 		return entityManager.createQuery(hql, Activities.class)
-				.setFirstResult(request.index).setMaxResults(pageSize)
+				.setFirstResult(index)
+				.setMaxResults(pageSize)
 				.getResultList();
 	}
 
@@ -57,7 +81,12 @@ public class DemoDao {
 	 */
 	public int getSearchActivitiesCount(String searchTerm) {
 		try {
-			String hql = getSearchActivitiesCountHql(searchTerm);
+			String hql;
+			if (searchTerm == null || searchTerm.isEmpty()) {
+				hql = "select count(*) from Activities";
+			} else {
+				hql = "select count(*) From Activities where title like '%" + searchTerm + "%'";
+			}
 			return entityManager.createQuery(hql, Long.class)
 					.getSingleResult().intValue();
 		} catch (NoResultException e) {

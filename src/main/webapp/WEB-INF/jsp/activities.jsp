@@ -79,7 +79,7 @@ angular.module('app', ['ngResource'])
 		};
 		
 		$scope.linkRow = function(val) {
-			document.location.href = rootPath + "/activities_users/" + val;
+			document.location.href = rootPath + "/registration/" + val;
 		};
 		
 		$scope.initPage();		

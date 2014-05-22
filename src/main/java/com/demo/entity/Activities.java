@@ -12,7 +12,7 @@ import javax.persistence.Temporal;
 
 @Entity
 @Table(name = "activities")
-public class Activities  implements Serializable {
+public class Activities  implements Serializable, DBObject{
 	
 	private static final long serialVersionUID = 1L;
 	

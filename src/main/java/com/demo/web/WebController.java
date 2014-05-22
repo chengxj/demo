@@ -13,10 +13,10 @@ public class WebController {
 		  return "activities";
 	  }
 	  
-	  @RequestMapping(value = "/activities_users/{activities_id}")
+	  @RequestMapping(value = "/registration/{activities_id}")
 	  public String productDetails(@PathVariable String activities_id, Model model) {
 	    model.addAttribute("activities_id", activities_id);
-	    return "activities-users";
+	    return "registration";
 	  }
 
 }
