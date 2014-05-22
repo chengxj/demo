@@ -32,7 +32,8 @@ public class DemoService {
 	  public ActivitiesDTO searchActivities(ActivitiesRequest request) {
 		  ActivitiesDTO dto = new ActivitiesDTO();		  
 		  dto.activities = demoDao.searchActivities(request.searchTerm, request.index);		  
-		  dto.num = demoDao.getSearchActivitiesCount(request.searchTerm);		  
+		  dto.num = demoDao.getSearchActivitiesCount(request.searchTerm);
+		  dto.pageNum = (int)(dto.num)%10 + 1;
 		  return dto;
 	  }
 	  

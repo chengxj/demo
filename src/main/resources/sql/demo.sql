@@ -45,7 +45,7 @@ CREATE TABLE `registration` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `activities_id` bigint(20) NOT NULL,
   `name` varchar(128) NOT NULL,
-  `sex` varchar(4) NOT NULL,
+  `sex` varchar(10) NOT NULL,
   `real_name` varchar(128) NOT NULL, 
   `contact_way` varchar(128) NOT NULL, 
   `emergency_contact` varchar(128) NOT NULL, 

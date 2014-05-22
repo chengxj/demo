@@ -11,5 +11,6 @@ public class ActivitiesDTO {
 	
 	public List<Activities> activities;
 	public long num;
+	public int pageNum;
 
 }

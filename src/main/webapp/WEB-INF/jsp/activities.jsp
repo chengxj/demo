@@ -49,7 +49,12 @@
 							</tr>
 						</tbody>
 					</table>
-					
+					<ul class="pagination">
+					<li><a href="#">&laquo;</a></li>
+					<li><a ng-click="searchActivities(searchTerm, 0)">1</a></li>
+					<li><a ng-click="searchActivities(searchTerm, 10);">2</a></li>
+					<li><a href="#">&raquo;</a></li>
+					</ul>
 				</div>
 			</div>
 		</div>
@@ -69,11 +74,17 @@ angular.module('app', ['ngResource'])
 	function($scope, activityDAO) {
 	
 		$scope.initPage = function() {
-			$scope.searchActivities("");
+			$scope.searchActivities("", 0);
 		};
 		
-		$scope.searchActivities = function(searchTerm) {
-			activityDAO.getActivities().save({searchTerm:searchTerm, index:0}, function(data) {
+		$scope.searchActivities = function(searchTerm, index) {			
+			activityDAO.getActivities().save({searchTerm:searchTerm, index:index}, function(data) {
+				$scope.data = data;
+			});
+		};
+		
+		$scope.getPageData = function(searchTerm, index) {			
+			activityDAO.getActivities().save({searchTerm:searchTerm, index:index}, function(data) {
 				$scope.data = data;
 			});
 		};
