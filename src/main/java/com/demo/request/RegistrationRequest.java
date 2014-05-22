@@ -1,12 +1,8 @@
-package com.demo.dto;
+package com.demo.request;
 
 import com.demo.entity.SexEnum;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
-@JsonInclude(JsonInclude.Include.NON_NULL)
-public class RegistrationDTO {
+public class RegistrationRequest {
 	
 	public Long id;// 主键
 	public Long activities_id;
@@ -18,5 +14,5 @@ public class RegistrationDTO {
 	public String emergency_contact_way;// 紧急联系电话
 	public int num;// 人数
 	public String equipment_experience_remarks;// 装备|户外经验|备注
-
+	
 }
