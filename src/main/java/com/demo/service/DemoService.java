@@ -22,7 +22,7 @@ public class DemoService {
 	  private CommonDao commonDao;
 	  
 	  @Autowired
-	  private DTOUtil dtoUtil;
+	  private DTOHelper dtoHelper;
 	  
 	  /**
 	   * 
@@ -66,7 +66,7 @@ public class DemoService {
 		  registration.setNum(request.num);
 		  registration.setEquipment_experience_remarks(request.equipment_experience_remarks);
 		  commonDao.saveDBOject(registration);
-		  return dtoUtil.buildRegistrationDTO(registration);
+		  return dtoHelper.buildRegistrationDTO(registration);
 	  }
   
 	  /**
@@ -85,7 +85,7 @@ public class DemoService {
 		  registration.setNum(request.num);
 		  registration.setEquipment_experience_remarks(request.equipment_experience_remarks);
 		  commonDao.saveDBOject(registration);
-		  return dtoUtil.buildRegistrationDTO(registration);
+		  return dtoHelper.buildRegistrationDTO(registration);
 	  }
 	  
 	  /**

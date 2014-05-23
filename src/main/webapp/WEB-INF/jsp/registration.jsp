@@ -67,13 +67,15 @@
 	        <table class="table">
 				<thead>
 					<tr class="clickableRow">
-						<td width="9%">#</td>
-						<td width="13%">title</td>
-						<td width="5%">type</td>
-						<td width="5%">leader</td>
-						<td width="13%">scenic_spots</td>
-						<td width="20%">departure</td>
-						<td width="20%">destination</td>
+						<td width="9%">序号</td>
+						<td width="13%">name</td>
+						<td width="5%">sex</td>
+						<td width="5%">rname</td>
+						<td width="13%">cway</td>
+						<td width="10%">econtact</td>
+						<td width="10%">ecway</td>
+						<td width="10%">num</td>
+						<td width="10%">remarks</td>						
 						<td width="15%">operation</td>
 					</tr>
 				</thead>
@@ -81,11 +83,13 @@
 					<tr ng-repeat="Registration in data.registrations" onmouseover="style.backgroundColor='#fae5e5'" onmouseout="style.backgroundColor='' ">
 						<td class="text-left">{{$index + 1}}</td>							
 						<td class="text-left">{{Registration.name}}</td>
- 						<td class="text-left">{{Registration.name}}</td>
-						<td class="text-left">{{Registration.name}}</td>
-						<td class="text-left">{{Registration.name}}</td>
-						<td class="text-left">{{Registration.name}}</td>
-						<td class="text-left">{{Registration.name}}</td>
+ 						<td class="text-left">{{Registration.sex}}</td>
+						<td class="text-left">{{Registration.real_name}}</td>
+						<td class="text-left">{{Registration.contact_way}}</td>
+						<td class="text-left">{{Registration.emergency_contact}}</td>
+						<td class="text-left">{{Registration.emergency_contact_way}}</td>
+						<td class="text-left">{{Registration.num}}</td>
+						<td class="text-left">{{Registration.equipment_experience_remarks}}</td>						
 						<td class="text-left"><button class="btn btn-primary" type="button" data-toggle="modal" data-target="#edit_Modal" ng-click="setEditIndex($index)">edit</button>&nbsp;<button class="btn btn-primary" type="button" data-toggle="modal" data-target="#delete_Modal" ng-click="setDeleteIndex($index)">remove</button></td>
 					</tr>
 				</tbody>
