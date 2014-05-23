@@ -5,7 +5,7 @@ import com.demo.dto.RegistrationDTO;
 import com.demo.entity.Registration;
 
 @Component
-public class DTOUtil {
+public class DTOHelper {
 	
 	public RegistrationDTO buildRegistrationDTO(Registration registration) {
 		RegistrationDTO dto = new RegistrationDTO();
