@@ -33,7 +33,7 @@ public class DemoService {
 		  ActivitiesDTO dto = new ActivitiesDTO();		  
 		  dto.activities = demoDao.searchActivities(request.searchTerm, request.index);		  
 		  dto.num = demoDao.getSearchActivitiesCount(request.searchTerm);
-		  dto.pageNum = (int)(dto.num)%10 + 1;
+		  dto.pageNum = (int)(dto.num  + 10 - 1)/10;
 		  return dto;
 	  }
 	  

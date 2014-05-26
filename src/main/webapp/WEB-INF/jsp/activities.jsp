@@ -15,7 +15,7 @@
 	    					<div class="input-group">
 	      						<input type="text" placeholder="title" ng-model="searchTerm" class="form-control">
 	      						<span class="input-group-btn">
-	        						<button class="btn btn-default" type="button" ng-click="searchActivities(searchTerm)" >Search</button>
+	        						<button class="btn btn-default" type="button" ng-click="searchActivities(searchTerm, 0)" >Search</button>
 	      						</span>	      						
 	    					</div>  					
 	  					</div>
@@ -49,11 +49,13 @@
 							</tr>
 						</tbody>
 					</table>
-					<ul class="pagination">
-					<li><a href="#">&laquo;</a></li>
-					<li><a ng-click="searchActivities(searchTerm, 0)">1</a></li>
-					<li><a ng-click="searchActivities(searchTerm, 10);">2</a></li>
-					<li><a href="#">&raquo;</a></li>
+					<ul class="pager">
+					  	<li><a ng-click="searchActivities(searchTerm, 0)">First</a></li>
+					  	<li><a ng-click="previousPage()">Previous</a></li>
+					  	<li><a ng-click="nextPage()">Next</a></li>
+					  	<li><a ng-click="searchActivities(searchTerm, data.pageNum*10 - 10)">Last</a></li>
+					  	<li>currentPage {{index/10 + 1}}</li>
+					  	<li>pageNum {{data.pageNum}}</li>
 					</ul>
 				</div>
 			</div>
@@ -61,6 +63,11 @@
 	</div>
 <script>
 var rootPath = '${pageContext.request.contextPath}';
+
+function pagination() {
+	var obj = {firstPage:1, previousPage:1, currentPage:1, nextPage:1, lastPage:1, pageNum:1};
+	return obj;
+}
 
 angular.module('app', ['ngResource'])
 .factory('activityDAO', function($resource) {
@@ -77,23 +84,37 @@ angular.module('app', ['ngResource'])
 			$scope.searchActivities("", 0);
 		};
 		
-		$scope.searchActivities = function(searchTerm, index) {			
+		$scope.searchActivities = function(searchTerm, index) {
+			$scope.index = index;
+			$scope.search = searchTerm;
 			activityDAO.getActivities().save({searchTerm:searchTerm, index:index}, function(data) {
 				$scope.data = data;
 			});
 		};
 		
+		$scope.previousPage = function() {
+			$scope.index = ($scope.index - 10)>=0?$scope.index - 10:0;
+			$scope.searchActivities($scope.search, $scope.index);
+		};
+		
+		$scope.nextPage = function() {			
+			$scope.index = ($scope.index + 10)>=$scope.data.num?parseInt($scope.data.num/10)*10:$scope.index + 10;
+			$scope.searchActivities($scope.search, $scope.index);
+		};
+		
 		$scope.getPageData = function(searchTerm, index) {			
 			activityDAO.getActivities().save({searchTerm:searchTerm, index:index}, function(data) {
-				$scope.data = data;
+				$scope.data = data;								
 			});
-		};
+		};	
 		
 		$scope.linkRow = function(val) {
 			document.location.href = rootPath + "/registration/" + val;
 		};
 		
-		$scope.initPage();		
+		$scope.initPage();
+		$scope.index = 0;
+		$scope.search = "";
 	}
 ]);
 </script>

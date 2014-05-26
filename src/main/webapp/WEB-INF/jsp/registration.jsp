@@ -67,7 +67,7 @@
 	        <table class="table">
 				<thead>
 					<tr class="clickableRow">
-						<td width="9%">序号</td>
+						<td width="9%">num</td>
 						<td width="13%">name</td>
 						<td width="5%">sex</td>
 						<td width="5%">rname</td>
@@ -151,7 +151,7 @@
   						<div class="col-md-6">
   							<div class="row">
   								<div class="col-md-4" align="right">num</div>
-  								<div class="col-md-8"><input type="text" ng-model="add_registration.num" class="form-control" required/></div>
+  								<div class="col-md-8"><input type="text" ng-model="add_registration.num" class="form-control" integer required/></div>
 							</div>
   						</div>
   						<div class="col-md-6">
@@ -244,7 +244,7 @@
   						<div class="col-md-6">
   							<div class="row">
   								<div class="col-md-4" align="right">num</div>
-  								<div class="col-md-8"><input type="text" ng-model="edit_registration.num" class="form-control" required/></div>
+  								<div class="col-md-8"><input type="text" ng-model="edit_registration.num" class="form-control" integer required/></div>
 							</div>
   						</div>
   						<div class="col-md-6">
@@ -272,12 +272,13 @@ var activities_id = '${activities_id}';
 
 function Registration() {
 	var obj = {id:null, activities_id:activities_id, name:"",sex:'MAN', real_name:"",
-			   contact_way:"", emergency_contact:"", emergency_contact_way:"", num :0, equipment_experience_remarks:""};
+			   contact_way:"", emergency_contact:"", emergency_contact_way:"", num :null, equipment_experience_remarks:""};
 	return obj;
 }
 
-angular.module('app', ['ngResource'])
-.factory('registrationDAO', function($resource) {
+var myApp = angular.module('app', ['ngResource']);
+
+myApp.factory('registrationDAO', function($resource) {
 	return {
 				getRegistrationDetail:function() {
 					return $resource(rootPath + '/api/get_registration_detail.json');
@@ -343,6 +344,25 @@ angular.module('app', ['ngResource'])
 		$scope.getRegistrationDetail();		
 	}
 ]);
+
+var INTEGER_REGEXP = /^[1-9][0-9]*$/;
+myApp.directive('integer', function() {
+  return {
+    require: 'ngModel',
+    link: function(scope, elm, attrs, ctrl) {
+      ctrl.$parsers.unshift(function(viewValue) {
+        if (INTEGER_REGEXP.test(viewValue)) {
+          ctrl.$setValidity('integer', true);
+          return viewValue;
+        } else {
+          ctrl.$setValidity('integer', false);
+          return undefined;
+        }
+      });
+    }
+  };
+});
+
 </script>
 </body>
 </html>
