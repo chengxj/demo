@@ -50,10 +50,10 @@
 						</tbody>
 					</table>
 					<ul class="pager">
-					  	<li><a ng-click="searchActivities(searchTerm, 0)">First</a></li>
+					  	<li><a ng-click="getPage(0)">First</a></li>
 					  	<li><a ng-click="previousPage()">Previous</a></li>
 					  	<li><a ng-click="nextPage()">Next</a></li>
-					  	<li><a ng-click="searchActivities(searchTerm, data.pageNum*10 - 10)">Last</a></li>
+					  	<li><a ng-click="getPage(data.pageNum*10 - 10)">Last</a></li>
 					  	<li>currentPage {{data.pageNum>0?index/10 + 1:0}}</li>
 					  	<li>pageNum {{data.pageNum}}</li>
 					</ul>
@@ -99,6 +99,11 @@ angular.module('app', ['ngResource'])
 		
 		$scope.nextPage = function() {			
 			$scope.index = ($scope.index + 10)>=$scope.data.num?parseInt($scope.data.num/10)*10:$scope.index + 10;
+			$scope.searchActivities($scope.search, $scope.index);
+		};
+		
+		$scope.getPage = function(index) {
+			$scope.index = index;
 			$scope.searchActivities($scope.search, $scope.index);
 		};
 		
