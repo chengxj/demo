@@ -102,12 +102,6 @@ angular.module('app', ['ngResource'])
 			$scope.searchActivities($scope.search, $scope.index);
 		};
 		
-		$scope.getPageData = function(searchTerm, index) {			
-			activityDAO.getActivities().save({searchTerm:searchTerm, index:index}, function(data) {
-				$scope.data = data;								
-			});
-		};	
-		
 		$scope.linkRow = function(val) {
 			document.location.href = rootPath + "/registration/" + val;
 		};
