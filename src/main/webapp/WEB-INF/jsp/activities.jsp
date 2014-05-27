@@ -54,7 +54,7 @@
 					  	<li><a ng-click="previousPage()">Previous</a></li>
 					  	<li><a ng-click="nextPage()">Next</a></li>
 					  	<li><a ng-click="searchActivities(searchTerm, data.pageNum*10 - 10)">Last</a></li>
-					  	<li>currentPage {{index/10 + 1}}</li>
+					  	<li>currentPage {{data.pageNum>0?index/10 + 1:0}}</li>
 					  	<li>pageNum {{data.pageNum}}</li>
 					</ul>
 				</div>
