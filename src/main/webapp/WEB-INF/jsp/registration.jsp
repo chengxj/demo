@@ -88,7 +88,7 @@
 						<td class="text-left">{{Registration.contact_way}}</td>
 						<td class="text-left">{{Registration.emergency_contact}}</td>
 						<td class="text-left">{{Registration.emergency_contact_way}}</td>
-						<td class="text-left">{{Registration.num}}</td>
+						<td class="text-left">{{Registration.num | number}}</td>
 						<td class="text-left">{{Registration.equipment_experience_remarks}}</td>						
 						<td class="text-left"><button class="btn btn-primary" type="button" data-toggle="modal" data-target="#edit_Modal" ng-click="setEditIndex($index)">edit</button>&nbsp;<button class="btn btn-primary" type="button" data-toggle="modal" data-target="#delete_Modal" ng-click="setDeleteIndex($index)">remove</button></td>
 					</tr>

@@ -103,7 +103,7 @@ angular.module('app', ['ngResource'])
 		};
 		
 		$scope.getPage = function(index) {
-			$scope.index = index;
+			$scope.index = index<0?0:index;
 			$scope.searchActivities($scope.search, $scope.index);
 		};
 		
