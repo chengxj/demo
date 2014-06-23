@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file="include/global.jspf" %>
 <c:set var="ngApp" value="app"/>
 <c:set var="ngController" value="ctrl"/>
@@ -7,7 +8,7 @@
 		<div class="bs-example">
 			<div class="panel panel-primary">
 				<div class="panel-heading">
-					<h3 class="panel-title">demo</h3>
+					<h3 class="panel-title">demo实例</h3>
 				</div>
 				<div class="panel-body">
 					<div class="row">

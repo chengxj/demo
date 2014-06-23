@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file="include/global.jspf" %>
 <c:set var="ngApp" value="app"/>
 <c:set var="ngController" value="ctrl"/>
