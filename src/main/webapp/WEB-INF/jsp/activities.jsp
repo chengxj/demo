@@ -63,8 +63,6 @@
 		</div>
 	</div>
 <script>
-var rootPath = '${pageContext.request.contextPath}';
-
 function pagination() {
 	var obj = {firstPage:1, previousPage:1, currentPage:1, nextPage:1, lastPage:1, pageNum:1};
 	return obj;
@@ -74,7 +72,7 @@ angular.module('app', ['ngResource'])
 .factory('activityDAO', function($resource) {
 	return {
 				getActivities:function() {
-					return $resource(rootPath + '/api/search_activities.json');
+					return $resource('/api/search_activities.json');
 				}
 		   };	
 })
@@ -109,7 +107,7 @@ angular.module('app', ['ngResource'])
 		};
 		
 		$scope.linkRow = function(val) {
-			document.location.href = rootPath + "/registration/" + val;
+			document.location.href = "/demo/registration/" + val;
 		};
 		
 		$scope.initPage();

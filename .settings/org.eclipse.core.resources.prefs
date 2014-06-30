@@ -1,3 +1,4 @@
 eclipse.preferences.version=1
+encoding//src/main/resources/sql/demo.sql=UTF-8
 encoding//src/main/webapp/WEB-INF/jsp/activities.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/jsp/registration.jsp=UTF-8

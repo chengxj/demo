@@ -24,7 +24,6 @@
       <list>
         <value>classpath:app.properties</value>
         <value>classpath:log4j.properties</value>
-        <value>file:${app.propertiesFile}</value>
       </list>
     </property>
   </bean>

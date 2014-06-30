@@ -8,12 +8,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class WebController {
 	
-	  @RequestMapping(value = "/")
+	  @RequestMapping(value = "/demo")
 	  public String defaultCallback(Model model) {
 		  return "activities";
 	  }
 	  
-	  @RequestMapping(value = "/registration/{activities_id}")
+	  @RequestMapping(value = "/demo/registration/{activities_id}")
 	  public String productDetails(@PathVariable String activities_id, Model model) {
 	    model.addAttribute("activities_id", activities_id);
 	    return "registration";

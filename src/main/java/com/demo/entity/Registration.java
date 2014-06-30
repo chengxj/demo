@@ -14,17 +14,17 @@ public class Registration implements Serializable, DBObject {
 	
 	@Id
 	@GeneratedValue
-	private Long id;// 主键
+	private Long id;
 	private Long activities_id;
-	private String name;// 人名
+	private String name;
 	@Enumerated(EnumType.STRING)
-	private SexEnum sex = SexEnum.MAN;// 性别
-	private String real_name;// 真实姓名
-	private String contact_way;// 联系方式
-	private String emergency_contact;// 紧急联系人
-	private String emergency_contact_way;// 紧急联系电话
-	private int num;// 人数
-	private String equipment_experience_remarks;// 装备|户外经验|备注
+	private SexEnum sex = SexEnum.MAN;
+	private String real_name;
+	private String contact_way;
+	private String emergency_contact;
+	private String emergency_contact_way;
+	private int num;
+	private String equipment_experience_remarks;
 	
 	/**
 	 * @return the id

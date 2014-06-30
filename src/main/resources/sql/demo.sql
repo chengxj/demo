@@ -22,18 +22,18 @@ CREATE TABLE `activities` (
 delete from `activities`;
 INSERT INTO activities (id, title, type_enum, scenic_spots, departure, destination, leader, start_date, end_date) 
 VALUES 
-(1, '¶«´ó¸ß', 'CYCLING', '', 'ÇåºÓ', '¶«·½ºì¡¢´ó´å¡¢¸ßÑÂ¿Ú', 'ÂÜ²·', null, null),
-(2, '»¨º£', 'MOUNTAIN', '', '°²»ÛÇÅ', 'ÕäÖéÈª', 'ºÚÃ¨', null, null),
-(3, '¶«´ó¸ß', 'CYCLING', '', 'ÇåºÓ', '¶«·½ºì¡¢´ó´å¡¢¸ßÑÂ¿Ú', 'ÂÜ²·', null, null),
-(4, '»¨º£', 'MOUNTAIN', '', '°²»ÛÇÅ', 'ÕäÖéÈª', 'ºÚÃ¨', null, null),
-(5, '¶«´ó¸ß', 'CYCLING', '', 'ÇåºÓ', '¶«·½ºì¡¢´ó´å¡¢¸ßÑÂ¿Ú', 'ÂÜ²·', null, null),
-(6, '»¨º£', 'MOUNTAIN', '', '°²»ÛÇÅ', 'ÕäÖéÈª', 'ºÚÃ¨', null, null),
-(7, '¶«´ó¸ß', 'CYCLING', '', 'ÇåºÓ', '¶«·½ºì¡¢´ó´å¡¢¸ßÑÂ¿Ú', 'ÂÜ²·', null, null),
-(8, '»¨º£', 'MOUNTAIN', '', '°²»ÛÇÅ', 'ÕäÖéÈª', 'ºÚÃ¨', null, null),
-(9, '¶«´ó¸ß', 'CYCLING', '', 'ÇåºÓ', '¶«·½ºì¡¢´ó´å¡¢¸ßÑÂ¿Ú', 'ÂÜ²·', null, null),
-(10, '»¨º£', 'MOUNTAIN', '', '°²»ÛÇÅ', 'ÕäÖéÈª', 'ºÚÃ¨', null, null),
-(11, '¶«´ó¸ß', 'CYCLING', '', 'ÇåºÓ', '¶«·½ºì¡¢´ó´å¡¢¸ßÑÂ¿Ú', 'ÂÜ²·', null, null),
-(12, '»¨º£', 'MOUNTAIN', '', '°²»ÛÇÅ', 'ÕäÖéÈª', 'ºÚÃ¨', null, null);
+(1, 'ä¸œå¤§é«˜', 'CYCLING', '', 'æ¸…æ²³', 'ä¸œæ–¹çº¢ã€å¤§æ‘ã€é«˜å´–å£', 'èåœ', null, null),
+(2, 'èŠ±æµ·', 'MOUNTAIN', '', 'å®‰æ…§æ¡¥', 'çç æ³‰', 'é»‘çŒ«', null, null),
+(3, 'ä¸œå¤§é«˜', 'CYCLING', '', 'æ¸…æ²³', 'ä¸œæ–¹çº¢ã€å¤§æ‘ã€é«˜å´–å£', 'èåœ', null, null),
+(4, 'èŠ±æµ·', 'MOUNTAIN', '', 'å®‰æ…§æ¡¥', 'çç æ³‰', 'é»‘çŒ«', null, null),
+(5, 'ä¸œå¤§é«˜', 'CYCLING', '', 'æ¸…æ²³', 'ä¸œæ–¹çº¢ã€å¤§æ‘ã€é«˜å´–å£', 'èåœ', null, null),
+(6, 'èŠ±æµ·', 'MOUNTAIN', '', 'å®‰æ…§æ¡¥', 'çç æ³‰', 'é»‘çŒ«', null, null),
+(7, 'ä¸œå¤§é«˜', 'CYCLING', '', 'æ¸…æ²³', 'ä¸œæ–¹çº¢ã€å¤§æ‘ã€é«˜å´–å£', 'èåœ', null, null),
+(8, 'èŠ±æµ·', 'MOUNTAIN', '', 'å®‰æ…§æ¡¥', 'çç æ³‰', 'é»‘çŒ«', null, null),
+(9, 'ä¸œå¤§é«˜', 'CYCLING', '', 'æ¸…æ²³', 'ä¸œæ–¹çº¢ã€å¤§æ‘ã€é«˜å´–å£', 'èåœ', null, null),
+(10, 'èŠ±æµ·', 'MOUNTAIN', '', 'å®‰æ…§æ¡¥', 'çç æ³‰', 'é»‘çŒ«', null, null),
+(11, 'ä¸œå¤§é«˜', 'CYCLING', '', 'æ¸…æ²³', 'ä¸œæ–¹çº¢ã€å¤§æ‘ã€é«˜å´–å£', 'èåœ', null, null),
+(12, 'èŠ±æµ·', 'MOUNTAIN', '', 'å®‰æ…§æ¡¥', 'çç æ³‰', 'é»‘çŒ«', null, null);
 
 
 --

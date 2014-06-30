@@ -18,18 +18,18 @@ public class Activities  implements Serializable, DBObject{
 	
 	@Id
 	@GeneratedValue
-	private Long id;// 主键
-	private String title;// 标题	
+	private Long id;
+	private String title;	
 	@Enumerated(EnumType.STRING)
-	private ActivityTypeEnum type_enum = ActivityTypeEnum.OTHER;// 类型
-	private String scenic_spots;// 景点
-	private String departure;// 出发地
-	private String destination;// 目的地
-	private String leader;// 领队
+	private ActivityTypeEnum type_enum = ActivityTypeEnum.OTHER;
+	private String scenic_spots;
+	private String departure;
+	private String destination;
+	private String leader;
 	@Temporal(javax.persistence.TemporalType.DATE)
-	private Date start_date;// 出发时间
+	private Date start_date;
 	@Temporal(javax.persistence.TemporalType.DATE)
-	private Date end_date;// 返回时间
+	private Date end_date;
 	
 	/**
 	 * @return the id

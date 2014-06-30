@@ -268,7 +268,6 @@
     </div>
 	</div>
 <script>
-var rootPath = '${pageContext.request.contextPath}';
 var activities_id = '${activities_id}';
 
 function Registration() {
@@ -282,16 +281,16 @@ var myApp = angular.module('app', ['ngResource']);
 myApp.factory('registrationDAO', function($resource) {
 	return {
 				getRegistrationDetail:function() {
-					return $resource(rootPath + '/api/get_registration_detail.json');
+					return $resource('/api/get_registration_detail.json');
 				},
 				addRegistration:function() {
-					return $resource(rootPath + '/api/add_registration.json');
+					return $resource('/api/add_registration.json');
 				},
 				editRegistration:function() {
-					return $resource(rootPath + '/api/edit_registration.json');
+					return $resource('/api/edit_registration.json');
 				},
 				deleteRegistration:function() {
-					return $resource(rootPath + '/api/delete_registration.json');
+					return $resource('/api/delete_registration.json');
 				}
 	};	
 })
