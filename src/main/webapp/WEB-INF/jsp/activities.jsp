@@ -16,26 +16,26 @@
 	    					<div class="input-group">
 	      						<input type="text" placeholder="title" ng-model="searchTerm" class="form-control">
 	      						<span class="input-group-btn">
-	        						<button class="btn btn-default" type="button" ng-click="searchActivities(searchTerm, 0)" >Search</button>
+	        						<button class="btn btn-default" type="button" ng-click="searchActivities(searchTerm, 0)" >查询</button>
 	      						</span>	      						
 	    					</div>  					
 	  					</div>
 	  					<div class="col-lg-6">
 		  					<div class="pull-right">
-		  						<span style="padding-top:15px;float:left">{{data.num | number}} Rows</span>
+		  						<span style="padding-top:15px;float:left">{{data.num | number}} 条</span>
 		  					</div>
 	  					</div>  					
   					</div>				 					
 					<table>
 						<thead>
 							<tr class="clickableRow">
-								<td width="5%">#</td>
-								<td width="25%">title</td>
-								<td width="10%">type</td>
-								<td width="10%">leader</td>
-								<td width="15%">scenic_spots</td>
-								<td width="15%">departure</td>
-								<td width="20%">destination</td>
+								<td width="5%">序号</td>
+								<td width="25%">标题</td>
+								<td width="10%">类型</td>
+								<td width="10%">领队</td>
+								<td width="15%">景点</td>
+								<td width="15%">出发地</td>
+								<td width="20%">目的地</td>
 							</tr>
 						</thead>
 						<tbody>
@@ -51,12 +51,12 @@
 						</tbody>
 					</table>
 					<ul class="pager">
-					  	<li><a ng-click="getPage(0)">First</a></li>
-					  	<li><a ng-click="previousPage()">Previous</a></li>
-					  	<li><a ng-click="nextPage()">Next</a></li>
-					  	<li><a ng-click="getPage(data.pageNum*10 - 10)">Last</a></li>
-					  	<li>currentPage {{data.pageNum>0?index/10 + 1:0}}</li>
-					  	<li>pageNum {{data.pageNum}}</li>
+					  	<li><a ng-click="getPage(0)">首页</a></li>
+					  	<li><a ng-click="previousPage()">前一页</a></li>
+					  	<li><a ng-click="nextPage()">下一页</a></li>
+					  	<li><a ng-click="getPage(data.pageNum*10 - 10)">尾页</a></li>
+					  	<li>当前页 {{data.pageNum>0?index/10 + 1:0}}</li>
+					  	<li>总页数 {{data.pageNum}}</li>
 					</ul>
 				</div>
 			</div>
