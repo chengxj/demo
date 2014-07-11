@@ -13,6 +13,11 @@ public class WebController {
 		  return "activities";
 	  }
 	  
+	  @RequestMapping(value = "/demo/error")
+	  public String error(Model model) {
+		  return "error";
+	  }
+	  
 	  @RequestMapping(value = "/demo/registration/{activities_id}")
 	  public String productDetails(@PathVariable String activities_id, Model model) {
 	    model.addAttribute("activities_id", activities_id);
