@@ -107,7 +107,7 @@ angular.module('app', ['ngResource'])
 		};
 		
 		$scope.linkRow = function(val) {
-			document.location.href = "/demo/registration/" + val;
+			document.location.href = "/example/registration/" + val;
 		};
 		
 		$scope.initPage();
